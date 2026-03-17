@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-
+import axios from 'axios';
 const CanvasDraw = () => {
   const canvasRef = useRef(null);
   const [drawing, setDrawing] = useState(false);
@@ -42,17 +42,12 @@ const CanvasDraw = () => {
   };
 
   const predict = async () => {
-    // const canvas = canvasRef.current;
-    // const image = canvas.toDataURL('image/png');
+    const canvas = canvasRef.current;
+    const image = canvas.toDataURL('image/png');
 
-    // const response = await fetch('http://127.0.0.1:5000/predict', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ image }),
-    // });
+    const response = await axios.post('http://127.0.0.1:8000/predict', JSON.stringify({ image }));
 
-    // const data = await response.json();
-    // setPrediction(data.prediction);
+    setPrediction(response.data.prediction);
   };
 
   return (

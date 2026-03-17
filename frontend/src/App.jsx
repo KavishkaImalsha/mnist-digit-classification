@@ -2,7 +2,9 @@ import CanvasDraw from "./components/CanvasDraw"
 
 const App = () => {
   return(<>
-    <CanvasDraw/>
+    <div className="flex justify-center items-center h-screen">
+      <CanvasDraw/>
+    </div>
   </>)
 }
 
